@@ -10,11 +10,11 @@ class ExpenseMember extends Model {
     );
     return this;
   }
+static associate(models) {
+  this.belongsTo(models.UserData, { foreignKey: "userId" });       // member belongs to a user
+  this.belongsTo(models.Expense, { foreignKey: "ExpenseId" });     // member belongs to an expense
+}
 
-  static associate(models) {
-    this.belongsTo(models.User, { foreignKey: "userId" });
-    this.belongsTo(models.Expense, { foreignKey: "expenseId" });
-  }
 }
 
 export default ExpenseMember;

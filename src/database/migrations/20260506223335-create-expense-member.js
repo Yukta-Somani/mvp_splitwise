@@ -9,12 +9,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      expenseId: {
-        type: Sequelize.INTEGER
-      },
-      userId: {
-        type: Sequelize.INTEGER
-      },
+ExpenseId: {
+  type: Sequelize.INTEGER,
+  references: { model: "Expenses", key: "id" },
+  onUpdate: "CASCADE",
+  onDelete: "CASCADE"
+},
+userId: {
+  type: Sequelize.INTEGER,
+  references: { model: "UserData", key: "id" },
+  onUpdate: "CASCADE",
+  onDelete: "CASCADE"
+},
       share: {
         type: Sequelize.DECIMAL
       },
