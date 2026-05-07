@@ -7,6 +7,8 @@ import globalErrorHandler from "../middlewares/errorHandler.middleware";
   available under the req.body property.
 */
 
+
+
 const routeFiles = fs
   .readdirSync(__dirname + "/../routes/")
   .filter((file) => file.endsWith(".js"));
@@ -15,6 +17,7 @@ let server;
 let routes = [];
 
 const expressService = {
+  app: null,
   init: async () => {
     try {
       /*
@@ -27,8 +30,11 @@ const expressService = {
       }
 
       server = express();
+      expressService.app = server;
       server.use(bodyParser.json());
-      server.use(routes);
+      routes.forEach((route) => {
+      server.use("/api", route);
+    });
       server.use(globalErrorHandler);
       server.listen(process.env.SERVER_PORT);
       console.log("[EXPRESS] Express initialized");

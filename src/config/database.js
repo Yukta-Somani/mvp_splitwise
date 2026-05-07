@@ -11,3 +11,9 @@ module.exports = {
   },
 };
 
+
+// npx sequelize-cli model:generate --name User --attributes email:string,password:string,currency:string
+// npx sequelize-cli init:models
+// npx sequelize-cli db:migrate
+
+
