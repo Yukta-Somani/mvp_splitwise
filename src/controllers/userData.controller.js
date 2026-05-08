@@ -38,4 +38,16 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports={updateUser, getUser, deleteUser};
+const getUserBalances = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    console.log(userId);
+    const balances = await userService.viewUserBalances(userId);
+    res.json({ balances });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+module.exports={getUserBalances,updateUser, getUser, deleteUser};

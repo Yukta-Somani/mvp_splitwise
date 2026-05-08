@@ -13,15 +13,6 @@ class UserData extends Model {
     return this;
   }
 
-  // static associate(models) {
-  //   this.hasMany(models.Expense, { foreignKey: "createdBy" });
-  //   this.belongsToMany(models.Expense, { through: models.ExpenseMember, foreignKey: "userId" });
-  //   this.belongsToMany(models.Expense, {
-  //   through: models.ExpenseMember,
-  //   foreignKey: "userId"
-  // });
-  // }
-
   static associate(models) {
   this.hasMany(models.Expense, { foreignKey: "createdBy" }); 
   this.hasMany(models.ExpenseMember, { foreignKey: "userId" });    // user can be in many expenses

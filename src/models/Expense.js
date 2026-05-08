@@ -14,15 +14,6 @@ class Expense extends Model {
     return this;
   }
 
-  // static associate(models) {
-  //   this.belongsTo(models.User, { foreignKey: "createdBy" });
-  //   this.belongsToMany(models.User, { through: models.ExpenseMember, foreignKey: "ExpenseId" });
-  //   this.belongsToMany(models.User, {
-  //   through: models.ExpenseMember,
-  //   foreignKey: "ExpenseId"
-  // });
-  // }
-
   static associate(models) {
   this.belongsTo(models.UserData, { foreignKey: "createdBy" }); 
   this.hasMany(models.ExpenseMember, { foreignKey: "ExpenseId" }); // ✅ one expense has many members
